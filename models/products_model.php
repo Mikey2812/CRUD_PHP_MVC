@@ -15,6 +15,16 @@
             $result = $this->con->query($sql);
             return $result;
         }
+
+        public function getAllRecords($fields='*', $options=null) {
+            $conditions = '';
+            if(isset($options['conditions'])) {
+                $conditions .= ' where '.$options['conditions'];
+            }
+            $query = "SELECT ".$fields." FROM ".$this->table.$conditions." INNER JOIN categories ON categories.id = products.category_id";
+            $result = mysqli_query($this->con,$query);
+            return $result;
+        }
         
     }
 ?>

@@ -16,7 +16,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">ID</th>
-                                <th scope="col">Category ID</th>
+                                <th scope="col">Category Name</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Description</th>
                                 <th scope="col">Price</th>
@@ -30,14 +30,14 @@
                             <?php while($row = mysqli_fetch_array($this->records)) : ?>
                             <tr>
                                 <td width="5%" scope="row"><?php echo $row['id']; ?></td>
-                                <td width="7%" scope="row"><?php echo $row['category_id']; ?></td>
-                                <td width="10%"><?php echo $row['name']; ?></td>
+                                <td width="7%" scope="row"><?php echo $row['name']; ?></td>
+                                <td width="10%"><?php echo $row['product_name']; ?></td>
                                 <td width="20%"><?php echo $row['description']; ?></td>
                                 <td width="10%"><?php echo $row['price']; ?></td>
                                 <td width="10%"><?php echo $row['quantity']; ?></td>
                                 <td width="25%"><img
                                         src="<?php echo "media/upload/" .$this->controller.'/'.$row['photo']; ?>"
-                                        alt="<?php echo $row['name']; ?>" class="img-thumbnail"></td>
+                                        alt="<?php echo $row['product_name']; ?>" class="img-thumbnail"></td>
                                 <td width="13%">
                                     <a class="btn btn-outline-success" role="button" href="<?php echo html_helpers::url(
                                         ['ctl'=>'products', 
