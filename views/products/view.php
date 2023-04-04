@@ -20,7 +20,7 @@
                         </p>
                     </div>
                     <div class="mb-3">
-                        <label class="mb-2">Category ID</label>
+                        <label class="mb-2">Category Name</label>
                         <p class="form-control">
                             <?php echo $this->record['category_id']; ?>
                         </p>
@@ -28,7 +28,7 @@
                     <div class="mb-3">
                         <label class="mb-2">Name</label>
                         <p class="form-control">
-                            <?php echo $this->record['name']; ?>
+                            <?php echo $this->record['product_name']; ?>
                         </p>
                     </div>
                     <div class="mb-3">
@@ -55,7 +55,7 @@
                             <?php echo $this->record['photo']; ?>
                         </p>
                         <img src="<?php echo "media/upload/" .$this->controller.'/'.$this->record['photo']; ?>"
-                            alt="<?php echo $this->record['name']; ?>" class="img-thumbnail">
+                            alt="<?php echo $this->record['product_name']; ?>" class="img-thumbnail">
                     </div>
                     <?php }  else { ?>
                     <p class='not-found-ID'>No Such Id Found</p>

@@ -66,9 +66,10 @@
         }
         
         public function del($id) {
+            $path = $_POST['path_Product'];
             $categories = categories_model::getInstance();
-		    $record = $categories->getRecord($id);
-            $categories->delRecord($id);
+		    //$record = $categories->getRecord($id);
+            $categories->delRecord($path);
                 //header( "Location: ".html_helpers::url(array('ctl'=>'categories')));
             // $this->display();
         }  

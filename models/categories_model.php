@@ -10,5 +10,12 @@
             else $record=false;
             return $record;
         }
+        
+        public function delRecord($path){
+            $query = "DELETE FROM $this->table WHERE path like '".$path."%'";
+            // echo $query;
+            // exit();
+            return mysqli_query($this->con,$query);
+        }
     }
 ?>
