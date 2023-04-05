@@ -8,7 +8,6 @@ $(document).ready(function () {
             id_Product = tc.attr('data-product-id');
             path_Product = tc.attr('data-path');
             var element = $('[data-path^="' + path_Product + '"]');
-            console.log(element);
             $.ajax({
                 url: url,
                 data: {

@@ -2,8 +2,6 @@ $(document).ready(function () {
 	$('.image-upload input[name="image"]').change(function () {
 		readURL(this);
 	});
-
-	console.log($('form-control'));
 });
 
 function readURL(input) {
