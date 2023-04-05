@@ -2,7 +2,8 @@
     class categories_controller extends main_controller {
         public function index() {
             $categories = categories_model::getInstance();
-            $this->records = $categories->getAllRecords();
+            $conditions = "path <> ''";
+            $this->records = $categories->getAllRecords('*', ['conditions'=>$conditions]);
             $this->display();
         }
         public function view($id) {

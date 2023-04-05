@@ -15,12 +15,13 @@
 
         public function add() {
             $categories = categories_model::getInstance();
-            $this->records = $categories->getAllRecords();
-            
+            $conditions = "path <> ''";
+            $this->records = $categories->getAllRecords('*', ['conditions'=>$conditions]);
             if(isset($_POST['btn_submit'])) {
                 $productData = $_POST['data'][$this->controller];
-                if(!empty($productData['name']))  {
+                if(!empty($productData['product_name']))  {
                     $productData['photo'] = SimpleImage_Component::uploadImg($_FILES, $this->controller);
+                    
                     $product = products_model::getInstance();
                     if($product->addRecord($productData))
                         header( "Location: ".html_helpers::url(array('ctl'=>'products')));
@@ -31,17 +32,13 @@
         public function edit($id) {
             $product = products_model::getInstance();
 		    $record = $product->getRecord($id);
+            $this->setProperty('record', $record);
             $categories = categories_model::getInstance();
-            $this->records = $categories->getAllRecords();
-            $categotyName = $categories->getRecord($id);
-            if ($categotyName['parent']) {
-                $parent = $categories->getParent($record['parent']);
-                $this->setProperty('parent', $parent);
-            }
-            $this->setProperty('record',$record);
+            $conditions = "path <> ''";
+            $this->records = $categories->getAllRecords('*', ['conditions'=>$conditions]);
             if(isset($_POST['btn_submit'])) {
                 $productData = $_POST['data'][$this->controller];
-                if(!empty($productData['name']))  {
+                if(!empty($productData['product_name']))  {
                     if(isset($_FILES) and $_FILES["image"]["name"]) {
                         if(file_exists(UploadREL .$this->controller.'/'.$record['photo']))
                             unlink(UploadREL .$this->controller.'/'.$record['photo']);

@@ -19,3 +19,8 @@ a.btn {
 thead tr th {
     text-align: center;
 }
+
+tbody tr td:first-child,
+tbody tr td:last-child {
+    text-align: center;
+}

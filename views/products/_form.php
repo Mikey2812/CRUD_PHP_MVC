@@ -11,7 +11,6 @@ $params = (isset($this->record))? array('id'=>$this->record['id']):'';
             <label>Category Name</label>
             <select id="Parent" placeholder="Parent" class="form-select" aria-label="Default select example"
                 name="data[<?php echo $this->controller; ?>][category_id]">
-                <option selected> <?php echo (isset($this->record))?$this->record['name']:'Select'?> </option>
                 <?php if($this->records) {?>
                 <?php while($row = mysqli_fetch_array($this->records)) : ?>
                 <option value=<?php echo $row['id'] ?>><?php echo $row['name'] ?></option>
@@ -21,8 +20,9 @@ $params = (isset($this->record))? array('id'=>$this->record['id']):'';
         </div>
         <div class="mb-3">
             <label>Product Name</label>
-            <input name="data[<?php echo $this->controller; ?>][name]" type="text" class="form-control" id="name"
-                placeholder="name" <?php echo (isset($this->record))? "value='".$this->record['name']."'":""; ?>>
+            <input name="data[<?php echo $this->controller; ?>][product_name]" type="text" class="form-control"
+                id="name" placeholder="name"
+                <?php echo (isset($this->record))? "value='".$this->record['product_name']."'":""; ?>>
         </div>
         <div class="mb-3">
             <label>Description</label>
@@ -46,7 +46,7 @@ $params = (isset($this->record))? array('id'=>$this->record['id']):'';
             <input name="image" type="file" class="form-control" id="photo" placeholder="photo">
             <?php if (isset($this->record)): ?>
             <img src="<?php echo "media/upload/" .$this->controller.'/'.$this->record['photo']; ?>"
-                alt="<?php echo $this->record['name']; ?>" class="img-thumbnail">
+                alt="<?php echo $this->record['product_name']; ?>" class="img-thumbnail">
             <?php endif; ?>
         </div>
         <div class="mb-3">

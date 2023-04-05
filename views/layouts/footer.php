@@ -8,6 +8,7 @@
     <script src="https://kit.fontawesome.com/d8d2839d44.js" crossorigin="anonymous"></script>
     <script src="<?php echo RootREL; ?>media/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="<?php echo RootREL; ?>media/js/jquery.min.js"></script>
+    <script src="<?php echo RootREL; ?>media/js/form.js"></script>
     <script src="<?php echo RootREL; ?>media/js/main.js"></script>
     </body>
 

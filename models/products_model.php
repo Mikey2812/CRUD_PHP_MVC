@@ -21,6 +21,7 @@
             if(isset($options['conditions'])) {
                 $conditions .= ' where '.$options['conditions'];
             }
+            $fields = 'products.id, name, product_name, description, price, quantity, photo';
             $query = "SELECT ".$fields." FROM ".$this->table.$conditions." INNER JOIN categories ON categories.id = products.category_id";
             $result = mysqli_query($this->con,$query);
             return $result;
