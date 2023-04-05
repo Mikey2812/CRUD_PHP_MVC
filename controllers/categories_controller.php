@@ -2,17 +2,13 @@
     class categories_controller extends main_controller {
         public function index() {
             $categories = categories_model::getInstance();
-            $conditions = "path <> ''";
+            $conditions = "path <> '0001'";
             $this->records = $categories->getAllRecords('*', ['conditions'=>$conditions]);
             $this->display();
         }
         public function view($id) {
             $categories = categories_model::getInstance();
             $record = $categories->getRecord($id);
-            // if ($record['parent']) {
-            //     $parent = $categories->getParent($record['parent']);
-            //     $this->setProperty('parent',$parent);
-            // }
             $this->setProperty('record',$record);
             $this->display();
         }
@@ -35,12 +31,6 @@
                 else {
                     $categoriesData['path'] .=  '.0001';
                 }
-
-                // Path id
-                // var_dump($categoriesData);
-                // $categoriesData['path'] = $categoriesData['path'].'.'.str_pad($categoriesData['id'], 4, '0', STR_PAD_LEFT);
-                // echo $categoriesData['path'];
-                // exit();
                 if(!empty($categoriesData['name']))  {
                     $categories = categories_model::getInstance();
                     if($categories->addRecord($categoriesData))
