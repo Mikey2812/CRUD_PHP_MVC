@@ -7,6 +7,8 @@ $(document).ready(function () {
             url = tc.attr('href');
             id_Product = tc.attr('data-product-id');
             path_Product = tc.attr('data-path');
+            var element = $('[data-path^="' + path_Product + '"]');
+            console.log(element);
             $.ajax({
                 url: url,
                 data: {
@@ -16,7 +18,8 @@ $(document).ready(function () {
                 type: "POST",
             })
                 .done(function (json) {
-                    tc.parent().parent().remove();
+                    element.parent().parent().remove();
+                    // tc.parent().parent().remove();
                 })
                 .fail(function (xhr, status, errorThrown) {
                     alert("Sorry, there was a problem!");
