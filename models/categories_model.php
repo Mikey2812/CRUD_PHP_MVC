@@ -11,10 +11,14 @@
             return $record;
         }
         
+        public function editPathChild($newPath,$oldPath){
+            $start = strlen($oldPath) + 1;
+            $query = "UPDATE $this->table SET path = CONCAT('$newPath', SUBSTRING(path, $start)) WHERE path like '$oldPath%'";
+            return mysqli_query($this->con,$query);
+        }
+
         public function delRecord($path){
             $query = "DELETE FROM $this->table WHERE path like '".$path."%'";
-            // echo $query;
-            // exit();
             return mysqli_query($this->con,$query);
         }
     }
